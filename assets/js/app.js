@@ -55,15 +55,15 @@ var tables = [
 
 // Basic route that sends the user first to the homepage
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "../../index.html"));
 });
 
-app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+app.get("/tables.html", function(req, res) {
+    res.sendFile(path.join(__dirname, "../../tables.html"));
   });
 
-app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"));
+app.get("/reserve.html", function(req, res) {
+    res.sendFile(path.join(__dirname, "../../reserve.html"));
   });
 
 // Displays all tables
@@ -87,10 +87,12 @@ app.get("/api/tables/:table", function(req, res) {
 });
 
 // Create New Reservations - takes in JSON input
-app.post("/api/tables", function(req, res) {
+app.post("./api/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   var newTable = req.body;
+  console.log(newTable);
+  $("#reservations").text(newTable);
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html

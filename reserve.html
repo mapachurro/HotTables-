@@ -86,7 +86,7 @@
       };
 
       // Question: What does this code do??
-      $.post("/api/tables", newReservation)
+      $.post("./api/tables", newReservation)
         .then(function(data) {
           console.log("add.html", data);
           alert("Adding character...");
