@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "MOS EISLEY CANTINA TABLE RESERVATION APP",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/mapachurro/HotTables-"
+  },
+  "keywords": [
+    "mos",
+    "eisley",
+    "node",
+    "reservations"
+  ],
+  "author": "Oliver Renwick, Julia Magyar, Stacy Acker",
+  "license": "ISC"
+}
