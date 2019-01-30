@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mos Eisley Table Reservations</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Mos Eisley Cantina</h1>
+            <h3>Please make your table reservations using this form!</h3>
+            <hr>
+            <a href="./index.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Tables</button></a>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><strong>Add Reservation</strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" role="form">
+
+                            <div class="form-group">
+                                <label for="Table No.">Table No.</label>
+                                <select id="tableNo" name="tables">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Party Name</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+
+                            <div class="form-group" id="seats">
+                                    <label for="No. of Seats">Seats</label>
+                                    <select id="seats" name="seats">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+
+                        </form>
+                        <br>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span>
+                            Reserve Your Table</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+  <script type="text/javascript">
+    // Code for adding a table reservation
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        routeName: $("tableNo option:selected").val(), 
+        name: $("tableNo").val(),
+        partyName: $("#name").val().trim(),
+        seats: $("#seats option:selected").val(),
+      };
+
+      // Question: What does this code do??
+      $.post("/api/tables", newReservation)
+        .then(function(data) {
+          console.log("add.html", data);
+          alert("Adding character...");
+        });
+    });
+  </script>
+
+</body>
+
+</html>
