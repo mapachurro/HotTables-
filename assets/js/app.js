@@ -14,8 +14,12 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// Tables (DATA)
 // =============================================================
+var openTables = [];
+var reservedTables = [];
+var waitList = [];
+
 var tables = [
   {
     routeName: "table1",
@@ -82,7 +86,7 @@ app.get("/api/tables/:table", function(req, res) {
   return res.json(false);
 });
 
-// Create New Characters - takes in JSON input
+// Create New Reservations - takes in JSON input
 app.post("/api/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
